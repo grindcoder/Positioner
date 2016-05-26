@@ -1,9 +1,8 @@
 # Positioner
 
-Con questo semplice script python e' possibile spostare i contenuti multimediali da una cartella di origine 
-ad una o piu' cartelle di destinazione;
+With this simple python script and you can move media from a source folder to one or more target directories;
 
-Da sistemare/aggiungere:
+To fix / add:
 
-- Gestione delle directory e dei file non multimediali
-- Schedulare lo script
+- Directory management and non-media files
+- Schedule the script

@@ -1,6 +1,6 @@
 # Positioner
 
-With this simple python script and you can move media from a source folder to one or more target directories;
+With this simple python script  you can move media file and folders from source directory to one or more target directories;
 
 To fix / add:
 

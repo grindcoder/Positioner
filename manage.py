@@ -1,7 +1,5 @@
 import os
 import shutil
-
-from settings import DOWNLOAD_DIR, dst_dir1, dst_dir2
 from logger import logger
 from positioner import Positioner
 
@@ -14,6 +12,6 @@ def run():
     positioner.run_on_dirs()
 
 
-if __name__ == '__main__'
+if __name__ == '__main__':
     logger.info("Start positioning..")
     run()

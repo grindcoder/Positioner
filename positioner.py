@@ -22,14 +22,20 @@ class Positioner(Logger):
             for type in self.configurations.FILES_MAPPING.keys():
                 # se la sua estensione è tra quelle configurate
                 if file.endswith(self.configurations.FILES_MAPPING[type]['exts']):
-                    shutil.move(os.path.join(location), self.get_destination_dir(type))
+                    try:
+                        shutil.move(os.path.join(location), self.get_destination_dir(type))
+                    except shutil.Error as e:
+                        logger.warning("{} already exist in destination directory".format(file))
 
     def position_file(self, location):
         self.debug("Position file")
         for type in self.configurations.FILES_MAPPING.keys():
             # se la sua estensione è tra quelle configurate
             if location.endswith(self.configurations.FILES_MAPPING[type]['exts']):
-                shutil.move(os.path.join(location), self.get_destination_dir(type))
+                try:
+                    shutil.move(os.path.join(location), self.get_destination_dir(type))
+                except shutil.Error:
+                    logger.warning("{} already exist in destination directory".format(file))
 
     def run_on_dirs(self):
         self.info("Running on target dirs")
@@ -38,6 +44,7 @@ class Positioner(Logger):
         for target_dir in self.configurations.DOWNLOAD_DIRS:
             self.info("Parsing\t->\t{}".format(target_dir))
             download_list = os.listdir(target_dir)
+
 
             for file in download_list:
 

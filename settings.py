@@ -1,0 +1,3 @@
+DOWNLOAD_DIR = "F:\scaricati_prova"  # Cartella download. Per esempio, Bittorrent > Impostazioni > Cartelle > Sposta i download completati in...
+dst_dir1 = "F:\MOVIES\Da smistare"  # Cartella dei film
+dst_dir2 = "F:\MUSIC\Da smistare"  # Cartella musica

@@ -38,5 +38,15 @@ FILES_MAPPING = {
             '.txt',
         ),
         'destination' : "documents"
+    },
+
+    'programs' : {
+        'exts' : ('.exe','.msi'),
+        'destination' : 'programs'
+    },
+
+    'images' : {
+        'exts' : ('.jpg','.png','.tiff'),
+        "destination" : 'images'
     }
 }

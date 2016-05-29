@@ -21,27 +21,27 @@ class Positioner(Logger):
             # ciclo i tipi di file configurati
             for type in self.configurations.FILES_MAPPING.keys():
                 # se la sua estensione è tra quelle configurate
-                if file.endswith(self.self.configurations.FILES_MAPPING['exts']):
+                if file.endswith(self.configurations.FILES_MAPPING[type]['exts']):
                     shutil.move(os.path.join(location), self.get_destination_dir(type))
 
     def position_file(self, location):
         self.debug("Position file")
         for type in self.configurations.FILES_MAPPING.keys():
             # se la sua estensione è tra quelle configurate
-            if location.endswith(self.self.configurations.FILES_MAPPING['exts']):
+            if location.endswith(self.configurations.FILES_MAPPING[type]['exts']):
                 shutil.move(os.path.join(location), self.get_destination_dir(type))
 
     def run_on_dirs(self):
         self.info("Running on target dirs")
-        self.debug("Dirs\n{}".format("\n".join(target_dirs)))
+        self.debug("Dirs\n{}".format("\n".join(self.configurations.DOWNLOAD_DIRS)))
 
-        for target_dir in target_dirs:
+        for target_dir in self.configurations.DOWNLOAD_DIRS:
             self.info("Parsing\t->\t{}".format(target_dir))
             download_list = os.listdir(target_dir)
 
             for file in download_list:
 
-                location = os.path.join(download_dir, file)
+                location = os.path.join(target_dir, file)
                 self.debug("Parsing\t->\t{}".format(file))
 
                 self.debug("Check if is dir")

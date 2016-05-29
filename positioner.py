@@ -1,7 +1,54 @@
+# -*- coding: utf-8 -*-
 from logger import Logger
-from settings import DEFAULT_POSITIONER_CONFIGURATIONS
+import settings
+
+import os
+import shutil
+
 
 class Positioner(Logger):
-    def __init__(self, configurations=DEFAULT_POSITIONER_CONFIGURATIONS):
+    def __init__(self, configurations=settings):
         self.configurations = configurations
 
+    def get_destination_dir(self, type):
+        return os.path.join(self.configurations.DESTINATION_DIR,
+                            self.configurations.FILES_MAPPING[type]['destination'])
+
+    def position_dir(self, location):
+        self.debug("Position dir")
+        # ciclo i file della cartella
+        for file in os.listdir(os.path.join(location)):
+            # ciclo i tipi di file configurati
+            for type in self.configurations.FILES_MAPPING.keys():
+                # se la sua estensione è tra quelle configurate
+                if file.endswith(self.self.configurations.FILES_MAPPING['exts']):
+                    shutil.move(os.path.join(location), self.get_destination_dir(type))
+
+    def position_file(self, location):
+        self.debug("Position file")
+        for type in self.configurations.FILES_MAPPING.keys():
+            # se la sua estensione è tra quelle configurate
+            if location.endswith(self.self.configurations.FILES_MAPPING['exts']):
+                shutil.move(os.path.join(location), self.get_destination_dir(type))
+
+    def run_on_dirs(self):
+        self.info("Running on target dirs")
+        self.debug("Dirs\n{}".format("\n".join(target_dirs)))
+
+        for target_dir in target_dirs:
+            self.info("Parsing\t->\t{}".format(target_dir))
+            download_list = os.listdir(target_dir)
+
+            for file in download_list:
+
+                location = os.path.join(download_dir, file)
+                self.debug("Parsing\t->\t{}".format(file))
+
+                self.debug("Check if is dir")
+                if os.path.isdir(location):
+                    # Se e' una directory  effettua un position dir
+
+                    self.position_dir(location)
+
+                # Altrimenti se e' un cazzo di file fai questo questo e questo
+                self.position_file(location)

@@ -25,7 +25,7 @@ class Positioner(Logger):
                     try:
                         shutil.move(os.path.join(location), self.get_destination_dir(type))
                     except shutil.Error as e:
-                        logger.warning("{} already exist in destination directory".format(file))
+                        self.warning("{} already exist in destination directory".format(file))
 
     def position_file(self, location):
         self.debug("Position file")
@@ -35,7 +35,7 @@ class Positioner(Logger):
                 try:
                     shutil.move(os.path.join(location), self.get_destination_dir(type))
                 except shutil.Error:
-                    logger.warning("{} already exist in destination directory".format(file))
+                    self.warning("{} already exist in destination directory".format(file))
 
     def run_on_dirs(self):
         self.info("Running on target dirs")

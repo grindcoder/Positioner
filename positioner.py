@@ -1,7 +1,6 @@
 # -*- coding: utf-8 -*-
 from logger import Logger
 import settings
-
 import os
 import shutil
 
@@ -23,7 +22,10 @@ class Positioner(Logger):
                 # se la sua estensione è tra quelle configurate
                 if file.endswith(self.configurations.FILES_MAPPING[type]['exts']):
                     try:
-                        shutil.move(os.path.join(location), self.get_destination_dir(type))
+                        if not os.path.exists(self.get_destination_dir(type)):
+                            os.mkdir(self.get_destination_dir(type))
+                        else:
+                            shutil.move(os.path.join(location), self.get_destination_dir(type))
                     except shutil.Error as e:
                         self.warning("{} already exist in destination directory".format(file))
 
@@ -33,9 +35,12 @@ class Positioner(Logger):
             # se la sua estensione è tra quelle configurate
             if location.endswith(self.configurations.FILES_MAPPING[type]['exts']):
                 try:
-                    shutil.move(os.path.join(location), self.get_destination_dir(type))
+                    if not os.path.exists(self.get_destination_dir(type)):
+                        os.mkdir(self.get_destination_dir(type))
+                    else:
+                         shutil.move(os.path.join(location), self.get_destination_dir(type))
                 except shutil.Error:
-                    self.warning("{} already exist in destination directory".format(file))
+                        self.warning("{} already exist in destination directory".format(file))
 
     def run_on_dirs(self):
         self.info("Running on target dirs")

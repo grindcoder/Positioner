@@ -2,10 +2,10 @@ DOWNLOAD_DIRS = [
     "F:\scaricati_prova",  # Cartella download. Per esempio, Bittorrent > Impostazioni > Cartelle > Sposta i download completati in...
 ]
 
-DESTINATION_DIR = "F:\POSIZIONATI_DA_SMISTARE"
+DESTINATION_DIR = "F:\scaricati_prova"
 
 dst_dir1 = "F:\MOVIES\Da smistare"  # Cartella dei film
-dst_dir2 = "F:\MUSIC\Da smistare"  # Cartella musica
+dst_dir2 = "F:\MUSIC\Da smistare"   # Cartella musica
 
 FILES_MAPPING = {
     'videos' : {
@@ -14,21 +14,23 @@ FILES_MAPPING = {
             '.mp4',
             '.mkv'
         ),
-        'destination' : "videos"
+        'destination' : "\\Videos"
     },
 
     'musics' : {
         'exts' : (
             '.mp3',
+            '.mp4',
+            '.flac',
          ),
-        'destination' : 'musics'
+        'destination' : '\\Musics'
     },
     'torrents' : {
         'exts' : (
             '.torrent',
 
         ),
-        'destination' : "torrents"
+        'destination' : "\\Torrents"
     },
     'documents' : {
         'exts' : (
@@ -37,16 +39,16 @@ FILES_MAPPING = {
             '.docx',
             '.txt',
         ),
-        'destination' : "documents"
+        'destination' : "\\Documents"
     },
 
     'programs' : {
         'exts' : ('.exe','.msi'),
-        'destination' : 'programs'
+        'destination' : '\\Programs'
     },
 
-    'images' : {
-        'exts' : ('.jpg','.png','.tiff'),
-        "destination" : 'images'
-    }
+    # 'images' : {
+    #     'exts' : ('.jpg','.png','.tiff'),
+    #     "destination" : '\\Images'
+    # }
 }

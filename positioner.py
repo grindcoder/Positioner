@@ -3,7 +3,7 @@ from logger import Logger
 import settings
 import os
 import shutil
-
+import subprocess
 
 class Positioner(Logger):
     def __init__(self, configurations=settings):
@@ -64,3 +64,15 @@ class Positioner(Logger):
 
                 # Altrimenti se e' un cazzo di file fai questo questo e questo
                 self.position_file(location)
+
+    def task_creator(self):
+        self.info("Creating the scheduled task...")
+        if not os.path.exists('C:\Windows\System32\Tasks\Positioner'):
+            subprocess.call("schtasks /create /SC minute  /MO 3  /TN Positioner /tr {}".format(os.getcwd() + "\manage.py"))
+        else:
+            pass
+
+
+
+
+
